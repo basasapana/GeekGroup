@@ -60,7 +60,7 @@ public class Employee_info {
 	public void setDID(String dID) {
 		DID = dID;
 	}
-	/*@Override
+	@Override
 	public int hashCode() {
 		return Objects.hash(DOB, ssn);
 	}
@@ -71,7 +71,12 @@ public class Employee_info {
 	            return false;
 	        }
 	        Employee_info emp = (Employee_info) o;
-	        return ssn == emp.ssn && Objects.equals(DOB, emp.DOB);
+	        
+	        boolean checkResult = (this.ssn.equals(emp.ssn) && this.DOB.equals(emp.DOB));
+	        
+	       // System.out.println("Equals check result"+ checkResult);
+	      return checkResult;
+	       
 	
-	}*/
+	}
 }

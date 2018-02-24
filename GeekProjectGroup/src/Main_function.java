@@ -43,27 +43,34 @@ public class Main_function {
 
 				Employee_info fun1 = new Employee_info(tokens[0], tokens[1], tokens[2], tokens[3], tokens[4], tokens[5],
 						tokens[6]);
+				duplicacyCheck(list,fun1,count);
+				/*boolean isEmpExist = list.contains(fun1);
+				System.out.println("Emp exist - "+ isEmpExist);
 
-				list.add(fun1);
-
-				// Diplay With Unique Value
-				if (choice == 2) {
-					displayUnique(fun1, list, count, fun2);
-
+				if (!isEmpExist) {
+					list.add(fun1);
+					//ds.displayEmployeeList(list, count);
+				}*/
+				if(choice==1) {
+					ds.evaluateWithSal(list,count);
 				}
 
-				// Display with Salary
-				if (choice == 1) {
-					ds.evaluateWithSal(list, count);
-				}
-
-				if (choice == 3) {
-					// System.out.println(tokens[6].contains(getDeptData(br2)));
-				}
+				
+				   if (choice == 2) { 
+				  displayUnique(fun1, list,count, fun2);
+				  
+				  }
+				  
+				  // Display with Salary if (choice == 1) { ds.evaluateWithSal(list, count); }
+				  
+				 /* if (choice == 3) { //
+				  System.out.println(tokens[6].contains(getDeptData(br2))); }*/
+				 
 
 				//
 
 				count++;
+		
 			}
 			br1.close();
 		} catch (FileNotFoundException e) {
@@ -73,20 +80,26 @@ public class Main_function {
 
 	}
 
+	private static void duplicacyCheck(ArrayList<Employee_info> list, Employee_info fun1,int count) {
+		// TODO Auto-generated method stub
+		boolean isEmpExist = list.contains(fun1);
+		/*System.out.println("Emp exist - "+ isEmpExist);*/
+
+		if (!isEmpExist) {
+			list.add(fun1);
+			/*ds.displayEmployeeList(list, count);*/
+		}/*else {
+			System.out.println("Duplicate line");
+		}*/
+	}
+
 	private static void displayUnique(Employee_info fun1, ArrayList<Employee_info> list, int count,
 			Employee_info fun2) {
-		String ssf1 = fun1.getSsn();
-
-		String ssf2 = fun2.getSsn();
-
-		if ((ssf1.contains(ssf2)) == false) {
-			list.add(fun2);
-			ds.displayEmployeeList(list, count);
-		} else if (ssf1.contains(ssf2) == true) {
+		duplicacyCheck(list,fun2,count);
 			ds.displayEmployeeList(list, count);
 		}
 
-	}
+	
 
 	private static void getDeptData(BufferedReader br2, ArrayList<Employee_info> list) {
 		String data;
